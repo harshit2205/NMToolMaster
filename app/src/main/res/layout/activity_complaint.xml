@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context=".ComplaintActivity">
+    <LinearLayout
+        android:id="@+id/complaint_fetch_complaints"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+        <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fetching Complaints"/>
+    </LinearLayout>
+        <TextView
+            android:id="@+id/no_complaints"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No complaints to show."
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:gravity="center"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/complaint_all"
+        android:visibility="gone"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/main_layout1">
+            <TextView
+                android:id="@+id/complaints_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Existing Complaints"
+                android:textSize="20sp"
+                android:layout_weight="4"
+                android:layout_gravity="center" />
+            <Button
+                android:id="@+id/see_all_complaints"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:text="MORE"
+                android:textColor="@android:color/white"/>
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:overScrollMode="always"
+                    android:id="@+id/main_complaints"/>
+            </android.support.v7.widget.CardView>
+        </ScrollView>
+    </LinearLayout>
+
+</RelativeLayout>

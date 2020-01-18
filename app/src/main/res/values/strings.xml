@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">NMToolMaster</string>
+    <array name="localities">
+        <item>enter location</item>
+        <item>BHAGWANPUR1</item>
+        <item>BHAGWANPUR2</item>
+        <item>CHITTUPUR1</item>
+        <item>CHITTUPUR2</item>
+        <item>PARADISE1</item>
+        <item>PARADISE2</item>
+        <item>PARADISE3</item>
+    </array>
+
+    <array name="complaint_status">
+        <item>raised</item>
+        <item>approved</item>
+        <item>assigned</item>
+        <item>completed</item>
+    </array>
+
+    <array name="complaint_type">
+        <item>set top box issue</item>
+        <item>cable problem</item>
+        <item>other</item>
+    </array>
+
+    <array name="settopboxtype">
+        <item>Den</item>
+        <item>Siti</item>
+        <item>Net Vision</item>
+    </array>
+    <array name="assigned_to">
+        <item>Not Assigned</item>
+        <item>Pandit ji</item>
+        <item>Kamlesh</item>
+        <item>Abhay Srivastava</item>
+    </array>
+
+    <array name="search_basis">
+        <item>set top box</item>
+        <item>name</item>
+        <item>non paid</item>
+        <item>den stbs</item>
+        <item>siti stbs</item>
+        <item>net vision</item>
+    </array>
+
+    <string name="action_search">Search</string>
+    <string name="search_hint">enter keyword</string>
+    <string name="Rs">\u20B9</string>
+</resources>
