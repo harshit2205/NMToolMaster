@@ -1,8 +1,12 @@
 package com.rajorpay.hex.nmtoolmaster;
 
+import android.Manifest;
 import android.app.SearchManager;
 import android.content.Context;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +16,7 @@ import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,6 +28,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rajorpay.hex.nmtoolmaster.Models.Customer;
 import com.rajorpay.hex.nmtoolmaster.Utils.DateUtils;
+import com.rajorpay.hex.nmtoolmaster.Utils.ExcelUtil;
 import com.rajorpay.hex.nmtoolmaster.Utils.NMToolConstants;
 import com.rajorpay.hex.nmtoolmaster.adapters.STBAdapter;
 
@@ -34,6 +40,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.OnItemSelected;
 
 public class AllSTBActivity extends AppCompatActivity {
@@ -59,6 +66,35 @@ public class AllSTBActivity extends AppCompatActivity {
             allSetUpBoxData.setVisibility(View.VISIBLE);
             }
         }
+    @BindView(R.id.all_export_button)
+    Button fetchExcel;
+    @OnClick(R.id.all_export_button)
+    void FetchExcelReport() {
+        if (isWriteStoragePermissionGranted()) {
+            ExcelUtil util = new ExcelUtil();
+            util.exportUserInfoToExcel(this, customerAreaMap);
+        } else {
+            Log.d("NM_TOOLstr", "permission not granted");
+        }
+    }
+
+    public  boolean isWriteStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v("NM_TOOLstr","Permission is granted2");
+                return true;
+            } else {
+                Log.v("NM_TOOLstr","Permission is revoked2");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 2);
+                return false;
+            }
+        }
+        else { //permission is automatically granted on sdk<23 upon installation
+            Log.v("NM_TOOLstr","Permission is granted2");
+            return true;
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +134,7 @@ public class AllSTBActivity extends AppCompatActivity {
                 allSetUpBoxData.setAdapter(myAdapter);
                 layout1.setVisibility(View.GONE);
                 allSetUpBoxData.setVisibility(View.VISIBLE);
+                fetchExcel.setEnabled(true);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

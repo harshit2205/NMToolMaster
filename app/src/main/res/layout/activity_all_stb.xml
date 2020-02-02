@@ -38,6 +38,7 @@
                 android:background="@color/colorPrimary"
                 android:textColor="@android:color/white"
                 android:padding="10dp"
+                android:enabled="false"
                 android:text="export excel"/>
         </RelativeLayout>
     </android.support.v7.widget.CardView>

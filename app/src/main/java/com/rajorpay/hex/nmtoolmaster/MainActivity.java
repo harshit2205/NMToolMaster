@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         listDataHeader.add("Complaints");
         listDataHeader.add("Payments");
         listDataHeader.add("Statistics");
+        listDataHeader.add("Channels and Packages");
 
         // Adding child data
         List<String> item1 = new ArrayList<String>();
@@ -85,8 +86,11 @@ public class MainActivity extends AppCompatActivity {
         item5.add("View All Pending Payments");
         item5.add("Payments This Month");
 
-        List<String> item6 = new ArrayList<String>();
+        List<String> item6 = new ArrayList<>();
         item6.add("Statistics");
+
+        List<String> item7 = new ArrayList<>();
+        item7.add("Edit Channels and Packages");
 
         listDataChild.put(listDataHeader.get(0), item1); // Header, Child data
         listDataChild.put(listDataHeader.get(1), item2);
@@ -94,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         listDataChild.put(listDataHeader.get(3), item4);
         listDataChild.put(listDataHeader.get(4), item5);
         listDataChild.put(listDataHeader.get(5), item6);
+        listDataChild.put(listDataHeader.get(6), item7);
     }
 
 
@@ -120,6 +125,8 @@ public class MainActivity extends AppCompatActivity {
                     case 4:
                         break;
                     case 5:
+                        break;
+                    case 6:
                         break;
                 }
                 if( i!= null) {
