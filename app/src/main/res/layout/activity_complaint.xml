@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:orientation="vertical"
-    tools:context=".ComplaintActivity">
+    tools:context=".PendingComplaintActivity">
     <LinearLayout
         android:id="@+id/complaint_fetch_complaints"
         android:layout_width="match_parent"

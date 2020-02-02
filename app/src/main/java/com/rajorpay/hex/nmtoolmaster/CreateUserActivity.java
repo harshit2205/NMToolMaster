@@ -7,7 +7,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -26,7 +25,7 @@ import com.rajorpay.hex.nmtoolmaster.Models.Customer;
 import com.rajorpay.hex.nmtoolmaster.Utils.NMToolConstants;
 import com.rajorpay.hex.nmtoolmaster.Utils.ValidationUtil;
 
-public class SignUpActivity extends AppCompatActivity {
+public class CreateUserActivity extends AppCompatActivity {
 
     EditText signUpName;
     EditText signUpSTBNr;
@@ -102,22 +101,22 @@ public class SignUpActivity extends AppCompatActivity {
                                     signUpLocality.getSelectedItem().toString().trim(),
                                     signUpAddress.getText().toString().trim(),NMToolConstants.NOT_PAID);
                             FirebaseDatabase.getInstance().getReference().child("Customer").child(
-                                    user.getUid()).setValue(customer).addOnCompleteListener(SignUpActivity.this,
+                                    user.getUid()).setValue(customer).addOnCompleteListener(CreateUserActivity.this,
                                     new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
-                                            Toast.makeText(SignUpActivity.this,
+                                            Toast.makeText(CreateUserActivity.this,
                                                     "registered",
                                                     Toast.LENGTH_SHORT).show();
                                         }
                                     });
-                            Intent i = new Intent(SignUpActivity.this, MainActivity.class);
+                            Intent i = new Intent(CreateUserActivity.this, MainActivity.class);
                             i.putExtra("user", user);
                             finishAffinity();
                             startActivity(i);
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(SignUpActivity.this, "Authentication failed.",
+                            Toast.makeText(CreateUserActivity.this, "Authentication failed.",
                                     Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -131,20 +130,20 @@ public class SignUpActivity extends AppCompatActivity {
         String errorTextPhonenr = ValidationUtil.phoneNrValidator(signUpphoneNr.getText().toString().trim());
         String errorTextPassword = ValidationUtil.passwordValidator(signUpPassword.getText().toString());
         if(!TextUtils.equals(errorTextName,ValidationUtil.VALID)){
-            Toast.makeText(SignUpActivity.this, errorTextName,Toast.LENGTH_SHORT).show();
+            Toast.makeText(CreateUserActivity.this, errorTextName,Toast.LENGTH_SHORT).show();
             return false;
         }else if(!TextUtils.equals(errorTextSTBNr,ValidationUtil.VALID)){
-            Toast.makeText(SignUpActivity.this, errorTextSTBNr,Toast.LENGTH_SHORT).show();
+            Toast.makeText(CreateUserActivity.this, errorTextSTBNr,Toast.LENGTH_SHORT).show();
             return false;
         }else if(!TextUtils.equals(errorTextPhonenr,ValidationUtil.VALID)){
-            Toast.makeText(SignUpActivity.this, errorTextPhonenr,Toast.LENGTH_SHORT).show();
+            Toast.makeText(CreateUserActivity.this, errorTextPhonenr,Toast.LENGTH_SHORT).show();
             return false;
         }else if(!TextUtils.equals(errorTextPassword, ValidationUtil.VALID)){
-            Toast.makeText(SignUpActivity.this, errorTextPassword,Toast.LENGTH_SHORT).show();
+            Toast.makeText(CreateUserActivity.this, errorTextPassword,Toast.LENGTH_SHORT).show();
             return false;
         }else if(TextUtils.isEmpty(signUpAddress.getText().toString())){
             errorText = "Please Enter Valid address";
-            Toast.makeText(SignUpActivity.this, errorText,Toast.LENGTH_SHORT).show();
+            Toast.makeText(CreateUserActivity.this, errorText,Toast.LENGTH_SHORT).show();
             return false;
         }
         return true;

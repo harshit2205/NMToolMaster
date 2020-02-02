@@ -31,7 +31,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ComplaintActivity extends AppCompatActivity {
+public class PendingComplaintActivity extends AppCompatActivity {
 
     @BindView(R.id.main_complaints) RecyclerView complaintSummary;
     @BindView(R.id.complaint_fetch_complaints) LinearLayout complaintFetchingLayout;
@@ -113,7 +113,7 @@ public class ComplaintActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(ComplaintActivity.this,
+                Toast.makeText(PendingComplaintActivity.this,
                         "Data Could not be fetched due to some issue",Toast.LENGTH_SHORT).show();
                 noComplaintLayout.setText("Can't fetch data");
                 noComplaintLayout.setVisibility(View.VISIBLE);

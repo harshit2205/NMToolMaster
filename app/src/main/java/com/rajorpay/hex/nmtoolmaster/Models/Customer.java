@@ -11,6 +11,7 @@ public class Customer {
     private String address;
     private String paymentStatus;
     private String paidTill;
+    private boolean isHeader = false;
 
     public Customer(){
     }
@@ -106,5 +107,13 @@ public class Customer {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public boolean isHeader() {
+        return isHeader;
+    }
+
+    public void setHeader(boolean header) {
+        isHeader = header;
     }
 }

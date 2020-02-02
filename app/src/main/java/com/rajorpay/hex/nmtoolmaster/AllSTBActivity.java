@@ -27,7 +27,10 @@ import com.rajorpay.hex.nmtoolmaster.Utils.NMToolConstants;
 import com.rajorpay.hex.nmtoolmaster.adapters.STBAdapter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,6 +40,7 @@ public class AllSTBActivity extends AppCompatActivity {
 
     List<Customer> customers;
     List<Customer> filteredData;
+    HashMap<String, List<Customer>> customerAreaMap;
     STBAdapter myAdapter;
     int comparisionBasis = 0;
     @BindView(R.id.all_loading)LinearLayout layout1;
@@ -47,40 +51,11 @@ public class AllSTBActivity extends AppCompatActivity {
     void reloadAdapter(int position) {
         if(myAdapter!= null) {
             layout1.setVisibility(View.VISIBLE);
-            if (position == 2) {
-                for (Customer customer : customers) {
-                    if (!DateUtils.isMoreThanCurrent(customer.getPaidTill())) {
-                        filteredData.add(customer);
-                    }
-                }
-                myAdapter.setComparisionBasis(0);
-                myAdapter.setCustomers(customers);
-            } else if(position == 3) {
-                for (Customer customer : customers) {
-                    if (customer.getBoxType().equals(NMToolConstants.DEN)) {
-                        filteredData.add(customer);
-                    }
-                }
-                myAdapter.setCustomers(filteredData);
-            }else if(position == 4) {
-                for (Customer customer : customers) {
-                    if (customer.getBoxType().equals(NMToolConstants.SITI)) {
-                        filteredData.add(customer);
-                    }
-                }
-            }else if(position == 5) {
-                for (Customer customer : customers) {
-                    if (customer.getBoxType().equals(NMToolConstants.NETVISION)) {
-                        filteredData.add(customer);
-                    }
-                }
-            } else {
-                    Log.d("NMTool", " " + position);
-                    comparisionBasis = position;
-                    myAdapter.setComparisionBasis(position);
-                    myAdapter.notifyDataSetChanged();
-                }
-                layout1.setVisibility(View.GONE);
+            Log.d("NMTool", " " + position);
+            comparisionBasis = position;
+            myAdapter.setComparisionBasis(position);
+            myAdapter.notifyDataSetChanged();
+            layout1.setVisibility(View.GONE);
             allSetUpBoxData.setVisibility(View.VISIBLE);
             }
         }
@@ -104,6 +79,8 @@ public class AllSTBActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         customers = new ArrayList<>();
+        customerAreaMap = new HashMap<String, List<Customer>>();
+
         DatabaseReference dbReference = FirebaseDatabase.getInstance().getReference().child(NMToolConstants.CUSTOMER);
         dbReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -111,10 +88,13 @@ public class AllSTBActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                     Customer customer = snapshot.getValue(Customer.class);
                     customers.add(customer);
+                    customerAreaMap = populateMap(customerAreaMap, customer);
                 }
-                filteredData = customers;
+
+                customers = adaptiveListCreator(customerAreaMap);
                 myAdapter = new STBAdapter(customers, comparisionBasis, getApplicationContext());
-                allListSize.setText("Total items in list: "+customers.size());
+                myAdapter.setCustomers(customers);
+                allListSize.setText("Total Number of Connections: "+customers.size());
                 allSetUpBoxData.setAdapter(myAdapter);
                 layout1.setVisibility(View.GONE);
                 allSetUpBoxData.setVisibility(View.VISIBLE);
@@ -124,6 +104,37 @@ public class AllSTBActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private HashMap<String,List<Customer>> populateMap(HashMap<String,List<Customer>> customerAreaMap, Customer customer){
+        String key = customer.getLocality();
+        if( customerAreaMap.containsKey(key)){
+            List<Customer> customers = customerAreaMap.get(key);
+            customers.add(customer);
+            customerAreaMap.put(key, customers);
+        }else{
+            List<Customer> customers = new ArrayList<>();
+            customers.add(customer);
+            customerAreaMap.put(key, customers);
+        }
+        return customerAreaMap;
+    }
+
+    private List<Customer> adaptiveListCreator(HashMap<String, List<Customer>> customerAreaMap){
+        List<Customer> customers = new ArrayList<Customer>();
+        Iterator it = customerAreaMap.entrySet().iterator();
+        String key = "";
+        while(it.hasNext()){
+            Map.Entry pair = (Map.Entry)it.next();
+            if(!key.equals(pair.getKey())){
+                Customer customer = new Customer();
+                customer.setLocality((String)pair.getKey());
+                customer.setHeader(true);
+                customers.add(customer);
+            }
+            customers.addAll((List<Customer>)pair.getValue());
+        }
+        return customers;
     }
 
     @Override

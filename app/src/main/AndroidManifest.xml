@@ -17,8 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".ComplaintInfoActivity" />
-        <activity android:name=".SignUpActivity"></activity>
-        <activity android:name=".ComplaintActivity" />
+        <activity android:name=".CreateUserActivity"></activity>
+        <activity android:name=".PendingComplaintActivity" />
         <activity android:name=".AllSTBActivity">
             <meta-data
                 android:name="android.app.searchable"

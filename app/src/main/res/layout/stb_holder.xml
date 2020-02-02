@@ -3,19 +3,46 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="10dp"
-    android:layout_margin="5dp"
-    android:orientation="horizontal">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="stb data"
-        android:id="@+id/holder_stb_info"
-        android:textSize="16sp"/>
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/holder_enter"
-        android:src="@drawable/ic_arrow_forward_black_24dp"/>
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:id="@+id/stb_item"
+        android:visibility="gone"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="stb data"
+            android:paddingLeft="10dp"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/holder_stb_info"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="?android:actionBarSize"
+            android:id="@+id/holder_enter"
+            android:padding="10dp"
+            android:src="@drawable/ic_arrow_forward_black_24dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimary"
+        android:layout_marginBottom="5dp"
+        android:visibility="gone"
+        android:layout_marginTop="5dp"
+        android:id="@+id/stb_header">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="stb data"
+            android:paddingLeft="10dp"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/holder_stb_header"/>
+    </LinearLayout>
+
 </LinearLayout>

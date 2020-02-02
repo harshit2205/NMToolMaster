@@ -39,10 +39,6 @@
     <array name="search_basis">
         <item>set top box</item>
         <item>name</item>
-        <item>non paid</item>
-        <item>den stbs</item>
-        <item>siti stbs</item>
-        <item>net vision</item>
     </array>
 
     <string name="action_search">Search</string>

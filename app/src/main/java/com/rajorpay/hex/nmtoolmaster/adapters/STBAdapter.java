@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.rajorpay.hex.nmtoolmaster.InfoActivity;
@@ -50,22 +51,12 @@ public class STBAdapter extends RecyclerView.Adapter<STBViewHolder> {
     public STBViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.stb_holder, viewGroup, false);
-        return new STBViewHolder(v);
+        return new STBViewHolder(v, viewGroup.getContext());
     }
 
     @Override
     public void onBindViewHolder(@NonNull STBViewHolder stbViewHolder, int i) {
-        switch(comparisionBasis){
-            case 0:
-                stbViewHolder.bindView(context, filteredList.get(i), filteredList.get(i).getBoxNumber());
-                break;
-            case 1:
-                stbViewHolder.bindView(context, filteredList.get(i), filteredList.get(i).getName());
-                break;
-            default:
-                stbViewHolder.bindView(context, filteredList.get(i), filteredList.get(i).getBoxNumber());
-                break;
-        }
+        stbViewHolder.bindView(filteredList.get(i), comparisionBasis);
     }
 
     @Override
@@ -80,6 +71,10 @@ public class STBAdapter extends RecyclerView.Adapter<STBViewHolder> {
                 String charString = charSequence.toString();
                     List<Customer> filteredList = new ArrayList<>();
                     for (Customer row : customers) {
+                        if(row.isHeader()){
+                            filteredList.add(row);
+                            continue;
+                        }
                         switch (comparisionBasis){
                             case 0:
                                 if (row.getBoxNumber().toLowerCase().contains(charString.toLowerCase()) ) {
@@ -110,16 +105,38 @@ public class STBAdapter extends RecyclerView.Adapter<STBViewHolder> {
 }
 
 class STBViewHolder extends RecyclerView.ViewHolder{
-    Customer customer;
-    Context context;
-    ImageView allDetails;
-    @BindView(R.id.holder_stb_info) TextView stbInfo;
+    private Customer customer;
+    private ImageView allDetails;
+    private TextView stbInfo;
+    private TextView locality;
+    private LinearLayout itemHolder;
+    private LinearLayout headerHolder;
 
-    public STBViewHolder(@NonNull View itemView) {
+    public void bindView(Customer customer, int comparisionBasis){
+        this.customer = customer;
+        if(customer.isHeader()){
+            itemHolder.setVisibility(View.GONE);
+            headerHolder.setVisibility(View.VISIBLE);
+            locality.setText(customer.getLocality());
+        }else{
+            headerHolder.setVisibility(View.GONE);
+            itemHolder.setVisibility(View.VISIBLE);
+            if(comparisionBasis == 1){
+                stbInfo.setText(customer.getName());
+            }else{
+                stbInfo.setText(customer.getBoxNumber());
+            }
+        }
+    }
+
+    public STBViewHolder(@NonNull View itemView , final Context context) {
         super(itemView);
-        ButterKnife.bind(itemView);
-        stbInfo = itemView.findViewById(R.id.holder_stb_info);
         allDetails = itemView.findViewById(R.id.holder_enter);
+        stbInfo = itemView.findViewById(R.id.holder_stb_info);
+        locality = itemView.findViewById(R.id.holder_stb_header);
+        itemHolder = itemView.findViewById(R.id.stb_item);
+        headerHolder = itemView.findViewById(R.id.stb_header);
+
         allDetails.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -131,9 +148,4 @@ class STBViewHolder extends RecyclerView.ViewHolder{
         });
     }
 
-    public void bindView(Context context, Customer customer, String text){
-        this.customer = customer;
-        this.context = context;
-        stbInfo.setText(text);
-    }
 }
