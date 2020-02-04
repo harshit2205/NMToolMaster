@@ -104,6 +104,7 @@ public class AllSTBActivity extends AppCompatActivity {
         allSetUpBoxData.setLayoutManager(new LinearLayoutManager(this));
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setTitle("Set Top Box Details");
     }
     @Override
     public boolean onSupportNavigateUp() {

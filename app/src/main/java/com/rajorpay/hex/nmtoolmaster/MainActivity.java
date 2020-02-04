@@ -116,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 1:
                         i = (childPosition == 0)?new Intent(MainActivity.this,CreateUserActivity.class):i;
+                        i = (childPosition == 1)?new Intent(MainActivity.this,CreateEmpActivity.class):i;
                         break;
                     case 2:
                         break;

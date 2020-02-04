@@ -1,10 +1,148 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".InfoActivity">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="5dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_avatar_round"
+                android:id="@+id/avatar"
+                android:contentDescription="avatar"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="STB Number"
+                android:textColor="@android:color/black"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/info_stb_number_header"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="STB Number"
+                android:layout_below="@id/info_stb_number_header"
+                android:layout_alignParentRight="true"
+                android:textSize="24sp"
+                android:id="@+id/info_stb_number"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Box Type"
+                android:textColor="@android:color/black"
+                android:layout_marginTop="15dp"
+                android:id="@+id/info_box_type_header"
+                android:layout_below="@id/avatar"
+                android:layout_alignParentLeft="true"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Box Type"
+                android:layout_below="@id/info_box_type_header"
+                android:textSize="20sp"
+                android:layout_alignParentLeft="true"
+                android:id="@+id/info_box_type"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_below="@id/info_stb_number"
+                android:id="@+id/info_package_amount_header"
+                android:layout_alignTop="@id/info_box_type_header"
+                android:layout_alignParentRight="true"
+                android:text="Package"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Package"
+                android:layout_alignParentRight="true"
+                android:textSize="20sp"
+                android:layout_below="@id/info_package_amount_header"
+                android:id="@+id/info_package_amount"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:cardCornerRadius="5dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Personal Details"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                android:layout_marginBottom="15dp"
+                android:id="@+id/_info_personal_details"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_below="@+id/_info_personal_details"
+                android:text="Phone Number"
+                android:id="@+id/info_phone_nr_header"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/info_phone_nr"
+                android:autoLink="phone"
+                android:linksClickable="true"
+                android:layout_below="@+id/info_phone_nr_header"
+                android:text="Phone Number"
+                android:textSize="20sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:layout_below="@+id/_info_personal_details"
+                android:layout_alignParentRight="true"
+                android:text="Locality"
+                android:id="@+id/info_locality_header"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/info_locality_header"
+                android:layout_alignParentRight="true"
+                android:textSize="20sp"
+                android:text="Locality"
+                android:id="@+id/info_locality"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:layout_marginTop="15dp"
+                android:textColor="@android:color/black"
+                android:layout_below="@+id/info_phone_nr"
+                android:id="@+id/info_address_header"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="bhagwanpur, Lanka, Varanasi"
+                android:layout_below="@id/info_address_header"
+                android:maxLines="2"
+                android:id="@+id/info_address"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
     <LinearLayout
         android:id="@+id/info_fetching_content"
         android:layout_width="wrap_content"
@@ -22,116 +160,17 @@
             android:text="fetching Cutomer"/>
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="10dp">
-            <TextView
-                android:id="@+id/info_header1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Edit Credentials"
-                android:fontFamily="bold"
-                android:gravity="bottom"
-                android:padding="10dp"
-                android:textSize="18sp"/>
-            <TextView
-                android:id="@+id/info_box_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="box type"
-                android:layout_below="@id/info_header1"
-                android:textSize="18sp"
-                android:padding="10dp"
-                android:gravity="bottom"/>
-            <TextView
-                android:id="@+id/info_box_nr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/info_header1"
-                android:layout_toRightOf="@+id/info_box_type"
-                android:layout_alignParentEnd="true"
-                android:text="set top box number"
-                android:textSize="18sp"
-                android:padding="10dp"
-                android:gravity="bottom"/>
-            <LinearLayout
-                android:id="@+id/info_layout4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/info_box_type"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/info_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="name"
-                    android:gravity="bottom"
-                    android:padding="10dp"
-                    android:textSize="18sp"/>
-                <EditText
-                    android:id="@+id/info_edit_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"/>
-
-                <TextView
-                    android:id="@+id/info_phone_nr"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="phone nr"
-                    android:textSize="18sp"
-                    android:padding="10dp"
-                    android:gravity="bottom"/>
-                <EditText
-                    android:id="@+id/info_edit_phone_nr"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"/>
-
-
-                <TextView
-                    android:id="@+id/info_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="address"
-                    android:textSize="18sp"
-                    android:padding="10dp"
-                    android:gravity="bottom"/>
-                <EditText
-                    android:id="@+id/info_edit_address"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    android:maxLines="2"/>
-                <TextView
-                    android:id="@+id/info_package_amount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="package amount"
-                    android:textSize="18sp"
-                    android:padding="10dp"
-                    android:gravity="bottom"/>
-                <EditText
-                    android:id="@+id/info_edit_package_amount"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"/>
-            </LinearLayout>
             <android.support.v7.widget.CardView
-                android:id="@+id/info_paymentss"
+                android:id="@+id/info_payments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/info_layout4"
-                android:layout_marginTop="10dp">
+                android:layout_margin="10dp"
+                app:cardCornerRadius="5dp">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:layout_margin="5dp">
+                    android:padding="10dp">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -140,24 +179,10 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:text="Payment details"
-                            android:textSize="18sp"
+                            android:text="Last 12 months Payment Details"
+                            android:textSize="20sp"
                             android:id="@+id/info_payment"/>
-                        <Button
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Show"
-                            android:textAllCaps="false"
-                            android:background="@color/colorPrimary"
-                            android:textColor="@android:color/white"
-                            android:id="@+id/info_payment_history"/>
                     </LinearLayout>
-                    <TextView
-                        android:id="@+id/info_no_history"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="no payment history."
-                        android:visibility="gone"/>
                     <ProgressBar
                         android:id="@+id/info_loading_history"
                         android:layout_width="wrap_content"
@@ -174,15 +199,4 @@
                 </LinearLayout>
             </android.support.v7.widget.CardView>
 
-        </RelativeLayout>
-    </ScrollView>
-    <Button
-        android:id="@+id/info_edit_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
-        android:layout_marginTop="10dp"
-        android:textColor="@android:color/white"
-        android:text="Edit"/>
-</RelativeLayout>
+</LinearLayout>
