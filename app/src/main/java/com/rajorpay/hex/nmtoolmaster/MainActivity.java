@@ -119,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
                         i = (childPosition == 1)?new Intent(MainActivity.this,CreateEmpActivity.class):i;
                         break;
                     case 2:
+                        i = (childPosition == 0)?new Intent(MainActivity.this,EditUserActivity.class):i;
                         break;
                     case 3:
                         i = (childPosition == 1)?new Intent(MainActivity.this, PendingComplaintActivity.class):i;

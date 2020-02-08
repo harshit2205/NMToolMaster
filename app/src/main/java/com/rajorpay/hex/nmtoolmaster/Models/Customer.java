@@ -12,6 +12,15 @@ public class Customer {
     private String paymentStatus;
     private String paidTill;
     private boolean isHeader = false;
+    private boolean isArchived = false;
+
+    public boolean isArchived() {
+        return isArchived;
+    }
+
+    public void setArchived(boolean archived) {
+        isArchived = archived;
+    }
 
     public Customer(){
     }

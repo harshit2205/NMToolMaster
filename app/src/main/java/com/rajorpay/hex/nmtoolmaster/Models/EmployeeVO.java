@@ -3,13 +3,15 @@ package com.rajorpay.hex.nmtoolmaster.Models;
 public class EmployeeVO {
 
     private String name;
+    private String signUpCode;
     private String phoneNr;
     private String password;
     private String designation;
     private int salery;
 
-    public EmployeeVO(String name, String phoneNr, String password, String designation, int salery) {
+    public EmployeeVO(String name, String signUpCode, String phoneNr, String password, String designation, int salery) {
         this.name = name;
+        this.signUpCode = signUpCode;
         this.phoneNr = phoneNr;
         this.password = password;
         this.designation = designation;
@@ -22,6 +24,14 @@ public class EmployeeVO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getSignUpCode() {
+        return signUpCode;
+    }
+
+    public void setSignUpCode(String signUpCode) {
+        this.signUpCode = signUpCode;
     }
 
     public String getPhoneNr() {

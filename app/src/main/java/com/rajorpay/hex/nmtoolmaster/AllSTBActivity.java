@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -46,7 +47,6 @@ import butterknife.OnItemSelected;
 public class AllSTBActivity extends AppCompatActivity {
 
     List<Customer> customers;
-    List<Customer> filteredData;
     HashMap<String, List<Customer>> customerAreaMap;
     STBAdapter myAdapter;
     int comparisionBasis = 0;
@@ -127,11 +127,10 @@ public class AllSTBActivity extends AppCompatActivity {
                     customers.add(customer);
                     customerAreaMap = populateMap(customerAreaMap, customer);
                 }
-
+                allListSize.setText("Total Number of Connections: "+customers.size());
                 customers = adaptiveListCreator(customerAreaMap);
                 myAdapter = new STBAdapter(customers, comparisionBasis, getApplicationContext());
                 myAdapter.setCustomers(customers);
-                allListSize.setText("Total Number of Connections: "+customers.size());
                 allSetUpBoxData.setAdapter(myAdapter);
                 layout1.setVisibility(View.GONE);
                 allSetUpBoxData.setVisibility(View.VISIBLE);
@@ -139,7 +138,7 @@ public class AllSTBActivity extends AppCompatActivity {
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Toast.makeText(AllSTBActivity.this, "Couldn't Fetch Details", Toast.LENGTH_SHORT).show();
             }
         });
     }

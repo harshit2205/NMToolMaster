@@ -4,6 +4,10 @@ public class IdPasswordVO {
     private String id;
     private String password;
 
+    public IdPasswordVO() {
+
+    }
+
     public IdPasswordVO(String id, String password) {
         this.id = id;
         this.password = password;

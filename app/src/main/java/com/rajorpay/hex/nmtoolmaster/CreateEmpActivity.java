@@ -28,6 +28,7 @@ public class CreateEmpActivity extends AppCompatActivity {
 
     @BindView(R.id.sign_up_name)
     EditText _name;
+    @BindView(R.id.sign_up_code)EditText _employeeCode;
     @BindView(R.id.sign_up_phonenr)EditText _phoneNr;
     @BindView(R.id.sign_up_password)EditText _password;
     @BindView(R.id.sign_up_designation)EditText _designation;
@@ -57,7 +58,7 @@ public class CreateEmpActivity extends AppCompatActivity {
 
                     name = _name.getText().toString().trim();
                     name = name.substring(0, 1).toUpperCase() + name.substring(1).toLowerCase();
-                    String email = _name.getText().toString().trim()+"@gmail.com";
+                    String email = _employeeCode.getText().toString().trim()+"@gmail.com";
                     createUser(email, _password.getText().toString());
                 }
             }
@@ -77,6 +78,7 @@ public class CreateEmpActivity extends AppCompatActivity {
                             } else {
                                 EmployeeVO employee = new EmployeeVO(
                                         _name.getText().toString(),
+                                        _employeeCode.getText().toString(),
                                         _phoneNr.getText().toString(),
                                         _password.getText().toString(),
                                         _designation.getText().toString(),

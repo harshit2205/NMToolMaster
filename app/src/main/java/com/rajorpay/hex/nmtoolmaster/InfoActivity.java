@@ -11,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,6 +51,9 @@ public class InfoActivity extends AppCompatActivity {
     @BindView(R.id.info_payment)TextView infoPayment;
     @BindView(R.id.info_loading_history)ProgressBar infoLoadingHistory;
     @BindView(R.id.payment_history)RecyclerView paymentHistory;
+    @BindView(R.id.info_archive_panel)
+    LinearLayout archivePanel;
+
 
     @BindDrawable(R.drawable.button_background_disabled)Drawable buttonDisabled;
 
@@ -75,6 +79,7 @@ public class InfoActivity extends AppCompatActivity {
         infoBoxType.setText(customer.getBoxType());
         infoAddress.setText(customer.getAddress());
         infoLocality.setText(customer.getLocality());
+        archivePanel.setVisibility((customer.isArchived())?View.VISIBLE:View.GONE);
         String packageAmountInt = getResources().getString(R.string.Rs)+" "+customer.getPackageAmount();
         infoPackageAmount.setText(packageAmountInt);
         if(TextUtils.isEmpty(customer.getPaidTill())){

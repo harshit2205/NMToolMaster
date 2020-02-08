@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="?android:actionBarSize"
+        android:id="@+id/dialog_update_image"
+        android:layout_margin="10dp"
+        android:src="@drawable/ic_update_black_24dp"/>
+    <TextView
+    android:layout_width="match_parent"
+    android:layout_height="?android:actionBarSize"
+        android:id="@+id/dialog_info_text"
+        android:gravity="center_vertical"
+        android:layout_margin="10dp"
+        android:layout_toRightOf="@+id/dialog_update_image"
+        android:text="Are You Sure to Update the User Details?"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dialog_info_text"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/dialog_confirm"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:background="@android:color/white"
+            android:layout_height="wrap_content"
+            android:text="CONFIRM"
+            />
+
+        <Button
+            android:id="@+id/dialog_dismiss"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:text="CANCEL"/>
+    </LinearLayout>
+
+
+</RelativeLayout>
