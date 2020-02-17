@@ -51,7 +51,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="scalingPercent" value="85" />
+                                                <entry key="scalingPercent" value="70" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -64,8 +64,8 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="ffffff" />
-                                      <entry key="foregroundImage" value="C:\Users\hsrivas1\Downloads\lock-icon.png" />
-                                      <entry key="outputName" value="ic_lock" />
+                                      <entry key="foregroundImage" value="C:\Users\hsrivas1\Downloads\complaint_icon.png" />
+                                      <entry key="outputName" value="ic_complaint" />
                                     </map>
                                   </option>
                                 </PersistentState>

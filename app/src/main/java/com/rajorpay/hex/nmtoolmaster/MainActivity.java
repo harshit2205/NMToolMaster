@@ -78,8 +78,7 @@ public class MainActivity extends AppCompatActivity {
         item3.add("Edit Employee Details");
 
         List<String> item4 = new ArrayList<String>();
-        item4.add("Create New Complaint");
-        item4.add("Pnding Coplaints");
+        item4.add("Pending Complaints");
         item4.add("Past Complaints");
 
         List<String> item5 = new ArrayList<String>();
@@ -103,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void addListeners(){
-        // Listview on child click listener
+        // List view on child click listener
         mainList.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
 
             @Override
@@ -120,9 +119,10 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 2:
                         i = (childPosition == 0)?new Intent(MainActivity.this,EditUserActivity.class):i;
+                        i = (childPosition == 1)?new Intent(MainActivity.this,EditEmpActivity.class):i;
                         break;
                     case 3:
-                        i = (childPosition == 1)?new Intent(MainActivity.this, PendingComplaintActivity.class):i;
+                        i = (childPosition == 0)?new Intent(MainActivity.this, PendingComplaintActivity.class):i;
                         break;
                     case 4:
                         break;

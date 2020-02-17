@@ -124,7 +124,9 @@ public class AllSTBActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                     Customer customer = snapshot.getValue(Customer.class);
-                    customers.add(customer);
+                    if(!customer.isArchived()){
+                        customers.add(customer);
+                    }
                     customerAreaMap = populateMap(customerAreaMap, customer);
                 }
                 allListSize.setText("Total Number of Connections: "+customers.size());

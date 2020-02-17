@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".CreateComplaintActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fetch User Details"
+        android:textSize="25sp"
+        android:id="@+id/main_head1"/>
+    <Spinner
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:layout_below="@+id/main_head1"
+        android:tooltipText="stb no."
+        android:entries="@array/search_basis"
+        android:id="@+id/main_search_type"/>
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_search_type"
+        android:hint="info"
+        android:id="@+id/main_more_info"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_more_info"
+        android:text="fetch"
+        android:id="@+id/main_fetch"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_marginTop="20dp"
+        android:id="@+id/main_no_user_found"
+        android:layout_below="@+id/main_fetch">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="User not found.."/>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/main_fetch"
+        android:visibility="gone"
+        android:id="@+id/main_user_list"
+        android:layout_marginTop="10dp"/>
+
+</RelativeLayout>

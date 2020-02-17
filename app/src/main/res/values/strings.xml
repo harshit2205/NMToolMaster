@@ -37,8 +37,8 @@
     </array>
 
     <array name="search_basis">
-        <item>set top box</item>
-        <item>name</item>
+        <item>Set Top Box</item>
+        <item>Name</item>
     </array>
 
     <string name="action_search">Search</string>

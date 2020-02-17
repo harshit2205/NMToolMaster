@@ -7,11 +7,13 @@ public class NMToolConstants {
     public static String CUSTOMER = "Customer";
 
     public static String BOX_NUMBER = "boxNumber";
+    public static String EMP_ID = "signUpCode";
     public static String ID = "id";
 
     public static String COMPLAINT = "Complaints";
     public static String PAYMENT = "Payments";
     public static String PASSLIST = "PASS";
+    public static String EMPLOYEE = "Employee";
 
     public static String STATUS_RAISED = "raised";
     public static String STATUS_APPROVED = "approved";

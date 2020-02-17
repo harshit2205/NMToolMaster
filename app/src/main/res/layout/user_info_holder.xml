@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="user name"
+            android:maxLines="1"
+            android:id="@+id/holder_user_name" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="stb number"
+            android:id="@+id/holder_user_stb"
+            android:maxLines="1"
+            android:layout_below="@+id/holder_user_name"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="address"
+            android:id="@+id/holder_user_address"
+            android:maxLines="2"
+            android:layout_below="@+id/holder_user_stb"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/holder_user_address"
+            android:text="package amount"
+            android:maxLines="1"
+            android:id="@+id/holder_user_package"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/holder_user_package"
+            android:id="@+id/holder_pay_head1"
+            android:text="Payment Details:"
+            android:layout_marginTop="10dp"
+            android:textSize="24sp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/holder_pay_head1">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:maxLines="1"
+                android:id="@+id/holder_pay_info"
+                android:text="up to date"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:layout_alignParentRight="true"
+                android:visibility="visible"
+                android:background="@color/colorPrimary"
+                android:textColor="@android:color/white"
+                android:text="Raise Complaint"
+                android:id="@+id/raise_complaint"/>
+        </RelativeLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

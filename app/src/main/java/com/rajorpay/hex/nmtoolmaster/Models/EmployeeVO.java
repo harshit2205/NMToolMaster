@@ -5,17 +5,37 @@ public class EmployeeVO {
     private String name;
     private String signUpCode;
     private String phoneNr;
-    private String password;
     private String designation;
     private int salery;
+    private boolean isArchived = false;
+    private String empId;
 
-    public EmployeeVO(String name, String signUpCode, String phoneNr, String password, String designation, int salery) {
+    public EmployeeVO() {
+    }
+
+    public EmployeeVO(String name, String signUpCode, String phoneNr, String designation, int salery, String empId) {
         this.name = name;
         this.signUpCode = signUpCode;
         this.phoneNr = phoneNr;
-        this.password = password;
         this.designation = designation;
         this.salery = salery;
+        this.empId = empId;
+    }
+
+    public String getEmpId() {
+        return empId;
+    }
+
+    public void setEmpId(String empId) {
+        this.empId = empId;
+    }
+
+    public boolean isArchived() {
+        return isArchived;
+    }
+
+    public void setArchived(boolean archived) {
+        isArchived = archived;
     }
 
     public String getName() {
@@ -40,14 +60,6 @@ public class EmployeeVO {
 
     public void setPhoneNr(String phoneNr) {
         this.phoneNr = phoneNr;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getDesignation() {

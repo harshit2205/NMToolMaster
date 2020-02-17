@@ -36,7 +36,7 @@ public class CreateEmpActivity extends AppCompatActivity {
     @BindView(R.id.sign_up_submit)
     Button submit;
 
-    FirebaseAuth firebaseAuth;
+    FirebaseAuth firebaseAuth = null;
     String name = null;
 
 
@@ -50,6 +50,7 @@ public class CreateEmpActivity extends AppCompatActivity {
         assert actionBar != null;
         actionBar.setTitle("Create New Employee");
         actionBar.setDisplayHomeAsUpEnabled(true);
+        firebaseAuth = FirebaseAuth.getInstance();
 
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,12 +78,12 @@ public class CreateEmpActivity extends AppCompatActivity {
                                 Toast.makeText(CreateEmpActivity.this, "Something Went Wrong. Please Try Again", Toast.LENGTH_SHORT).show();
                             } else {
                                 EmployeeVO employee = new EmployeeVO(
-                                        _name.getText().toString(),
+                                        name,
                                         _employeeCode.getText().toString(),
                                         _phoneNr.getText().toString(),
-                                        _password.getText().toString(),
                                         _designation.getText().toString(),
-                                        Integer.parseInt(_salery.getText().toString())
+                                        Integer.parseInt(_salery.getText().toString()),
+                                        user.getUid()
                                 );
                                 FirebaseDatabase.getInstance().getReference().child("Employee").child(
                                         user.getUid()).setValue(employee).addOnCompleteListener(CreateEmpActivity.this,
@@ -95,7 +96,7 @@ public class CreateEmpActivity extends AppCompatActivity {
                                             }
                                         });
                                 IdPasswordVO idPasswordVO = new IdPasswordVO(
-                                        _name.getText().toString().trim(),
+                                        _employeeCode.getText().toString().trim(),
                                         _password.getText().toString()
                                 );
                                 FirebaseDatabase.getInstance().getReference().child("PASS").child(
@@ -126,13 +127,13 @@ public class CreateEmpActivity extends AppCompatActivity {
 
     private boolean validateAll() {
         String errorTextName = ValidationUtil.nameValidator(_name.getText().toString().trim());
-        String errorTextPhonenr = ValidationUtil.phoneNrValidator(_phoneNr.getText().toString().trim());
+        String errorTextPhoneNr = ValidationUtil.phoneNrValidator(_phoneNr.getText().toString().trim());
         String errorTextPassword = ValidationUtil.passwordValidator(_password.getText().toString());
         if(!TextUtils.equals(errorTextName,ValidationUtil.VALID)){
             Toast.makeText(this, errorTextName,Toast.LENGTH_SHORT).show();
             return false;
-        }else if(!TextUtils.equals(errorTextPhonenr,ValidationUtil.VALID)){
-            Toast.makeText(this, errorTextPhonenr,Toast.LENGTH_SHORT).show();
+        }else if(!TextUtils.equals(errorTextPhoneNr,ValidationUtil.VALID)){
+            Toast.makeText(this, errorTextPhoneNr,Toast.LENGTH_SHORT).show();
             return false;
         }else if(!TextUtils.equals(errorTextPassword, ValidationUtil.VALID)){
             Toast.makeText(this, errorTextPassword,Toast.LENGTH_SHORT).show();
